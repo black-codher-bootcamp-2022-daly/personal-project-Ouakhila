@@ -1,0 +1,32 @@
+#video {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+
+}
+.content {
+    text-align: center;
+    position: absolute;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    top: 40vh;
+    color:white;
+    font-size: 50px;
+
+}
+.content .h1 {
+    font-size: 4rem;
+    color: white;
+}
+p{
+    font-size: 1.8rem;
+    font-weight: 200;
+    text-transform: uppercase;
+    margin-bottom: 1.6rem;
+}
+.all-img-content {
+    background-color: #FCEDDA;
+}
