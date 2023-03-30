@@ -27,6 +27,7 @@ MongoClient.connect(process.env.DATABASE_CONNECTION_STRING)
     // });
 
     require("./routes/profilesRoutes")(app, db);
+    require("./routes/profilesRequestRoutes")(app, db);
 
     app.listen(PORT, () => {
       console.log(`API running on port ${PORT}`);

@@ -1,37 +1,45 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import { FaBars, FaTimes } from "react-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faYoutube,
+  faFacebook,
+  faTwitter,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons";
+
 import "./Footer.css";
 function Footer() {
   return (
-    <div className="footer">
+    <div className="social-container">
       <div class="content-footer">
-        <ul class="social-media">
-          <li class="socia">
-            <a href="https://www.facebook.com/ouakhila.nanri/">
-              <i class="fab fa-facebook-square"></i>
-            </a>
-          </li>
-          <li class="socia">
-            <a href="https://twitter.com/ouakhila">
-              <i class="fab fa-twitter-square"></i>
-            </a>
-          </li>
-
-          <li class="socia">
-            <a href="https://www.youtube.com/c/OuakhilaTorou ">
-              <i class="fab fa-youtube"></i>
-            </a>
-          </li>
-          <li class="socia">
-            <a href="https://www.linkedin.com/in/nanri-ouakhilatou-torou-656b4790/">
-              <i class="fab fa-linkedin"></i>
-            </a>
-          </li>
-        </ul>
-        <div class="bottom-notes">
-          <p>copyright &copy;2023</p>
-        </div>
+        <a
+          href="https://www.youtube.com/channel/UCclYeDZ_GjrrJ5Tr9A96J7A"
+          className="youtube social"
+        >
+          <FontAwesomeIcon icon={faYoutube} size="2x" />
+        </a>
+        <a
+          href="https://www.facebook.com/ouakhila.nanri"
+          className="facebook social"
+        >
+          <FontAwesomeIcon icon={faFacebook} size="2x" />
+        </a>
+        <a
+          href="https://twitter.com/ouakhila?lang=en"
+          className="twitter social"
+        >
+          <FontAwesomeIcon icon={faTwitter} size="2x" />
+        </a>
+        <a
+          href="https://www.instagram.com/ouakhila.tech/"
+          className="instagram social"
+        >
+          <FontAwesomeIcon icon={faInstagram} size="2x" />
+        </a>
+      </div>
+      <div class="bottom-notes">
+        <p>copyright &copy;2023</p>
       </div>
     </div>
   );

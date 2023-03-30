@@ -1,0 +1,32 @@
+.myprofilimg{
+    height: 200px;
+    width: 130px;
+    border-radius: 12px;
+}
+
+.myProfile {
+    padding-top: 90px;
+    padding-left: 40px;
+    padding-bottom: 20px;
+   
+}
+.myProfileImgContent {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+    padding-right: 840px;
+    background-color: #EE4E34
+}
+
+.description {
+    font-size: 30px;
+    padding-top: 20px;
+}
+
+.first_Name {
+    padding-top: 50px;
+    padding-left: 20px;
+    font-size: 30px;
+}
+

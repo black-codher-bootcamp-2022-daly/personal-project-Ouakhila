@@ -19,7 +19,7 @@ function Header() {
         </li>
         <li>
           <Link to="/login" className="List">
-            Signup
+            Login
           </Link>
         </li>
       </ul>

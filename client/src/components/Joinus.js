@@ -14,7 +14,7 @@ function Joinus() {
         </p1>
         <div className="btn-div">
           {" "}
-          <button>Register here</button>
+          <button className="btn">Register here</button>
         </div>
       </div>
     </div>

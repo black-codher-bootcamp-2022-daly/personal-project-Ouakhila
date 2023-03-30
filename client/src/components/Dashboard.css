@@ -4,3 +4,45 @@
     height: 20;
     width: 100;
 }
+.list-buddies {
+    background-color: #FCEDDA; 
+    padding-left: 40px;
+}
+.dashboard-content {
+    background-color: #FCEDDA;  
+}
+.dash-img {
+    height: 150px;
+    width: 150px;
+    border-radius: 12px;
+
+}
+.dash-info {
+    padding-bottom: 10px;
+    padding-top: 20px;
+}
+.btn-dash {
+    padding-bottom: 20px;
+    display: flex;
+    align-content: space-between;
+
+}
+
+.btn-c {
+    border-radius: 12px;
+    text-decoration: none; 
+    
+    color: white;
+    border: none;
+    width: 120px;
+    height: 50px;
+ 
+    cursor: pointer;
+    color: white;
+    background-color: gray;
+}
+
+.btn-c:hover {
+    background:  #f44336;
+    color: white;
+  }

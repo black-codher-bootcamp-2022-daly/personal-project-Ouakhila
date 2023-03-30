@@ -18,6 +18,7 @@ const profilesRoutes = (app, db) => {
    */
   app.get(`/api/profile`, async (req, res) => {
     // Waits for asynchronous `find()` operation to complete and converts results to array
+    // const filter = { religion: "Muslim" };
     const profiles = await profilesCollection().find({}).toArray();
 
     return res.status(200).send(profiles);
@@ -67,10 +68,19 @@ const profilesRoutes = (app, db) => {
 
   app.get(`/api/profile/:id`, async (req, res) => {
     const { id } = req.params;
-    const query = { _id: new ObjectId(id) };
+    const query = { id: parseInt(id) };
 
     const profileID = await profilesCollection().findOne(query);
+    console.log(id);
     return res.status(200).send(profileID);
+  });
+
+  app.get(`/api/buddies`, async (req, res) => {
+    // Waits for asynchronous `find()` operation to complete and converts results to array
+    const filter = { typeOfTraveler: "frequent traveler" };
+    const profiles = await profilesCollection().find(filter).toArray();
+    console.log(profiles);
+    return res.status(200).send(profiles);
   });
 };
 

@@ -20,7 +20,7 @@ function Video() {
       <div>
         <div className="content">
           {" "}
-          <h1> Buddy Findher</h1>
+          <h1> Buddy Finder</h1>
           <p>Safe space for women to meet and travel </p>
         </div>
       </div>

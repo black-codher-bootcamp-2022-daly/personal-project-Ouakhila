@@ -3,11 +3,13 @@ import React, { useState, useEffect } from "react";
 import { Model } from "survey-core";
 import { Survey } from "survey-react-ui";
 import "survey-core/defaultV2.min.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./Dashboard.css";
 
 // SERVICES THAT CALL OUR API ENDPOINTS
 import { getAllProfiles } from "../services/profileService";
+import Header from "./Header";
+import Footer from "./Footer";
 
 const json = {
   title: "Welcome to travel buddy finder",
@@ -72,15 +74,15 @@ const json = {
     {
       name: "property-detailsBuddy finder",
       elements: [
-        {
-          type: "dropdown",
-          name: "currentLocation",
-          title: "Country of current location",
-          isRequired: true,
-          choicesByUrl: {
-            url: "https://surveyjs.io/api/CountriesExample",
-          },
-        },
+        // {
+        //   type: "dropdown",
+        //   name: "currentLocation",
+        //   title: "Country of current location",
+        //   isRequired: true,
+        //   choicesByUrl: {
+        //     url: "https://surveyjs.io/api/CountriesExample",
+        //   },
+        // },
         {
           type: "dropdown",
           name: "nextLocation",
@@ -90,19 +92,19 @@ const json = {
             url: "https://surveyjs.io/api/CountriesExample",
           },
         },
-        {
-          type: "boolean",
-          name: "currentLocation",
-          title: "Do you want a travel buddy based on your current location ?",
-          isRequired: true,
-        },
-        {
-          type: "boolean",
-          name: "nextLocation",
-          startWithNewLine: false,
-          title: "Do you want a travel buddy based on your next location ?",
-          isRequired: true,
-        },
+        // {
+        //   type: "boolean",
+        //   name: "currentLocation",
+        //   title: "Do you want a travel buddy based on your current location ?",
+        //   isRequired: true,
+        // },
+        // {
+        //   type: "boolean",
+        //   name: "nextLocation",
+        //   startWithNewLine: false,
+        //   title: "Do you want a travel buddy based on your next location ?",
+        //   isRequired: true,
+        // },
       ],
       title: "Buddy finder",
     },
@@ -150,30 +152,24 @@ const json = {
 };
 
 function Dashboard() {
-  const navigate = useNavigate();
-  const navigateToProfile = () => {
-    navigate("/profile");
-  };
+  // function connectProfile(id) {}
 
   const [profiles, setProfiles] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [surveyData, setSurveyData] = useState();
-
+  const [connection, setConnection] = useState();
+  // const { id } = useParams();
   const survey = new Model(json);
 
-  // useEffect(() => {
-  //   //var newData;
-  //   survey.onComplete.add((sender, options) => {
-  //     let surveydatas = JSON.stringify(sender.data, null, 3);
-  //     // const surveydataJson = surveyData;
-  //     let surveydataJson = JSON.parse(surveydatas);
-  //     console.log(surveydatas);
+  const navigate = useNavigate();
 
-  //     setSurveyData(() => surveydataJson);
-  //     console.log(surveyData);
-  //   });
-  // }, [survey.onComplete, surveyData]);
+  // console.log(id);
+  const navigateToProfile = (event) => {
+    console.log(event);
+    const id = event.target.dataset["id"];
+    navigate(`/profile/${id}`);
+  };
 
   useEffect(() => {
     survey.onComplete.add((sender, options) => {
@@ -187,7 +183,7 @@ function Dashboard() {
       setSurveyData(surveydataJson);
       console.log(surveyData);
 
-      fetch(`http://localhost:8080/api/profile?q=${newData}`)
+      fetch(`http://localhost:8080/api/buddies?q=${newData}`)
         .then((response) => {
           if (!response.ok) {
             throw new Error(
@@ -197,24 +193,10 @@ function Dashboard() {
           console.log(response.json);
           return response.json();
         })
-        // .then((actualData) => {
-        //   newData = actualData;
-        // })
-        .then((actualData) => {
-          //   console.log(actualData);
-          // actualData.forEach((element) => {
-          //   // let newEl =
-          //   if (element.first_name === "Malik") {
-          //     actualData += newData;
-          //   }
 
-          //   //  null;
-          //   console.log(element.interest);
-          //   console.log(surveydataJson);
-          //   console.log(surveydataJson.interest);
-          // });
+        .then((actualData) => {
           console.log(actualData);
-          // console.log(newData);
+
           setProfiles(actualData);
 
           setError(null);
@@ -229,15 +211,31 @@ function Dashboard() {
     });
   }, []);
 
+  function connect(id) {
+    profiles.map((item) => {
+      // console.log(profilesRequest);
+      if (item.id === id && item.status === true) {
+        console.log(item);
+        console.log(item.status);
+        item.status = false;
+        setConnection(item);
+      } else if (item.id === id && item.status === false) {
+        item.status = true;
+        setConnection(item);
+      }
+
+      return item;
+    });
+  }
+
   return (
-    <div>
-      {/* <surveyResponse/> */}
+    <div className="dashboard-content">
       <div className="dvSurvey">
         {" "}
         <Survey model={survey} className="surveyjs" />
       </div>
 
-      <h1>List of Buddies</h1>
+      <h1 className="list-buddies">List of Buddies</h1>
       {loading && <div>A moment please...</div>}
       {error && (
         <div>{`There is a problem fetching the fetching data - ${error}`}</div>
@@ -245,23 +243,46 @@ function Dashboard() {
       <ul>
         {profiles &&
           profiles.map(
-            ({ id, first_name, interest, profilePicture, description }) => (
-              //interest[0] === "Beaches" ? (
+            ({
+              id,
+              first_name,
+              interest,
+              profilePicture,
+              description,
+              isConnected,
+              status,
+            }) => (
               <div>
-                <li key={id}>
+                <div key={id} className="dash-info">
+                  <img src={profilePicture} alt="" className="dash-img" />
                   <h3>{first_name}</h3>
-                  <img src={profilePicture} type="" />
                   <p>{description}</p>
-                </li>
-                <div>
-                  <button>Connect</button>
-                  <button onClick={navigateToProfile}>Check profile</button>
+                </div>
+                <div className="btn-dash">
+                  {status === false ? (
+                    <button onClick={() => connect(id)} className="btn">
+                      Connect
+                    </button>
+                  ) : (
+                    <button onClick={() => connect(id)} className="btn-d">
+                      Disconnect
+                    </button>
+                  )}
+
+                  <button
+                    onClick={navigateToProfile}
+                    data-id={id}
+                    className="btn-c"
+                  >
+                    Check profile
+                  </button>
                 </div>
               </div>
             )
             // ) : null
           )}
       </ul>
+      <Footer></Footer>
     </div>
   );
   // let surveyData = JSON.stringify(sender.data, null, 3);

@@ -2,32 +2,47 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginPage.css";
 // import "../components/ImageLogin";
-// import ImageLogin from "../components/ImageLogin";
+import LogImg from "../images/loginimg.jpg";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import Joinus from "../components/Joinus";
 
 function LoginPage() {
   const navigate = useNavigate();
 
-  const navigateToDashboard = () => {
-    navigate("/Dashboard");
+  const navigateToMyprofile = () => {
+    navigate("/myprofile");
   };
 
   return (
     <div>
-      <div className="page">
-        <div className="loginP">
-          <h1>Register Here</h1>
-          <input type="text" placeholder="first name" />
-          <input type="text" placeholder="surname" />
-          <input type="password" placeholder="password" />
+      <div>
+        <Header></Header>
+      </div>
+      <div>
+        <div className="page">
+          <img src={LogImg} alt="" id="logImg" />
+          <div className="loginP">
+            <h1>Login Here</h1>
+            <input type="text" placeholder="email" />
 
-          <button onClick={navigateToDashboard}>Sign Up</button>
-          <div>
-            {" "}
-            <p>Do you have an account?</p>
-            <div>Login here</div>
+            <input type="password" placeholder="password" />
+
+            <button onClick={navigateToMyprofile} className="btn">
+              Login
+            </button>
+            <div>
+              {" "}
+              <p>Do you have an account?</p>
+              <div>Register here</div>
+            </div>
           </div>
+          {/* <ImageLogin></ImageLogin> */}
         </div>
-        {/* <ImageLogin></ImageLogin> */}
+      </div>
+
+      <div>
+        <Footer></Footer>
       </div>
     </div>
   );

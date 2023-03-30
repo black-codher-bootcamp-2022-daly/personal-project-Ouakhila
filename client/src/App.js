@@ -5,6 +5,8 @@ import { Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import Dashboard from "./components/Dashboard";
 import Profile from "./components/Profile";
+import About from "./components/About";
+import MyProfile from "./components/MyProfile";
 
 // SERVICES THAT CALL OUR API ENDPOINTS
 // import { getAllProfiles } from "./services/profileService";
@@ -16,7 +18,9 @@ function App() {
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/Dashboard" element={<Dashboard />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
-        <Route path="/profile" element={<Profile />}></Route>
+        <Route path="/profile/:id" element={<Profile />}></Route>
+        <Route path="/about" element={<About />}></Route>
+        <Route path="/myprofile" element={<MyProfile />}></Route>
       </Routes>
     </div>
   );

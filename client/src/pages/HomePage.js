@@ -14,9 +14,9 @@ function HomePage() {
       <Header></Header>
       <Welcome></Welcome>
       <Video></Video>
-      <About></About>
-      <Joinus></Joinus>
-      <Footer></Footer>
+      <About id="some-about"></About>
+      {/* <Joinus></Joinus>
+      <Footer></Footer> */}
     </div>
   );
 }
