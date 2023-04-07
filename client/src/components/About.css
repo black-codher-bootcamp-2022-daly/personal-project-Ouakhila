@@ -1,0 +1,21 @@
+.divAbout {
+    padding-top: 20px;
+    display: flex;
+    background-color: #EE4E34;
+}
+.div-text {
+    text-align: center;
+    padding-left: 10%;
+    padding-right:5%;
+    padding-top: 30%;
+   
+}
+
+.imageWomen {
+    position:static;
+    width:60%;
+    height: 5%
+}
+/* .div-footer-about {
+    background-color: #FCEDDA;
+} */

@@ -1,0 +1,29 @@
+.joinus-content {
+    height: 500px;
+    padding-top: 50px;
+    background-color: #FCEDDA;
+    text-align: center;
+}
+.p1{
+    padding-top: 50px;
+    font-size:larger;
+}
+.btn-div{
+   padding-top: 20px;
+}
+.btn {
+    border-radius: 12px;
+    text-decoration: none;
+    color: black;
+    border: none;
+    width: 120px;
+    height: 50px;
+    cursor: pointer;
+
+    background-color: #f77b68;
+}
+.btn:hover {
+ background-color: #EE4E34;
+
+ color: black
+}

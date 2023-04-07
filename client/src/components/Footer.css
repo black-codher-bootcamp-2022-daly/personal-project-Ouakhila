@@ -1,0 +1,35 @@
+
+div.bottom-notes {
+ 
+    font-size: 10px;
+}
+  .social-container {
+    text-align: center;
+    background-color: #EE4E34;
+    padding: 25px 50px;
+  }
+  a.social {
+    margin: 0 1rem;
+    transition: transform 250ms;
+    display: inline-block;
+  }
+
+  a.social:hover {
+    transform: translateY(-2px);
+  }
+
+  a.youtube {
+    color: white;
+  }
+  
+  a.facebook {
+    color: #4968ad;
+  }
+  
+  a.twitter {
+    color: #49a1eb;
+  }
+  
+  a.instagram {
+    color: white;
+  }
